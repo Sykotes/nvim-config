@@ -21,6 +21,11 @@ opt.termguicolors = true
 opt.winborder = "rounded"
 opt.signcolumn = "yes"
 
+vim.cmd([[
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+]])
+
 -- plugins
 
 vim.pack.add({
@@ -34,10 +39,11 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason.nvim" },
 })
 
-require("mason").setup()
-require("fidget").setup({})
-require("mini.pick").setup()
-require("mini.bufremove").setup()
+require 'mason'.setup()
+require 'nvim-treesitter'.install { 'lua', 'typst', 'rust', 'c' }
+require 'fidget'.setup({})
+require 'mini.pick'.setup()
+require 'mini.bufremove'.setup()
 
 -- LSP
 vim.lsp.config("lua_ls", {
@@ -57,6 +63,15 @@ vim.lsp.enable({
     "rust_analyzer",
 })
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
+
+-- treesitter
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '<filetype>' },
+    callback = function()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        vim.treesitter.start()
+    end,
+})
 
 -- clipboard
 map({ "n", "v" }, "<leader>y", '"+y')
