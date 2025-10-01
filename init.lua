@@ -61,15 +61,6 @@ vim.lsp.enable({
 })
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
--- treesitter
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '<filetype>' },
-    callback = function()
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        vim.treesitter.start()
-    end,
-})
-
 -- clipboard
 map({ "n", "v" }, "<leader>y", '"+y')
 map({ "n", "v" }, "<leader>d", '"+d')
