@@ -30,17 +30,14 @@ vim.cmd([[
 
 vim.pack.add({
     { src = "https://github.com/echasnovski/mini.nvim" },
-    { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/j-hui/fidget.nvim" },
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
     { src = "https://github.com/chomosuke/typst-preview.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
 })
 
 require 'mason'.setup()
-require 'nvim-treesitter'.install { 'lua', 'typst', 'rust', 'c' }
 require 'fidget'.setup({})
 require 'mini.pick'.setup()
 require 'mini.bufremove'.setup()
