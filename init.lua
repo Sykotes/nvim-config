@@ -80,7 +80,7 @@ map("n", "<leader>p", '"+p')
 map("v", "<leader>p", '"+P')
 
 -- remove all highlighting
-vim.api.nvim_set_keymap("n", "<Esc>", ':let @/ = ""<CR><Esc>', { noremap = true, silent = true })
+map("n", "<Esc>", ":noh<cr>", { silent = true })
 
 -- other Mappings
 map("n", "<leader>l", vim.lsp.buf.format, { desc = "Format buffer" })
