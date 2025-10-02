@@ -23,7 +23,10 @@ opt.signcolumn = "yes"
 
 -- plugins
 vim.pack.add({
-    { src = "https://github.com/catppuccin/nvim", name = "catppuccin"},
+    {
+        src = "https://github.com/catppuccin/nvim",
+        name = "catppuccin",
+    },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/echasnovski/mini.nvim" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
