@@ -21,14 +21,10 @@ opt.termguicolors = true
 opt.winborder = "rounded"
 opt.signcolumn = "yes"
 
-vim.cmd([[
-    hi Normal guibg=NONE ctermbg=NONE
-    hi NonText guibg=NONE ctermbg=NONE
-]])
-
 -- plugins
-
 vim.pack.add({
+    { src = "https://github.com/catppuccin/nvim", name = "catppuccin"},
+    { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/echasnovski/mini.nvim" },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/j-hui/fidget.nvim" },
@@ -36,11 +32,13 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
 })
-
 require 'mason'.setup()
 require 'fidget'.setup({})
 require 'mini.pick'.setup()
 require 'mini.bufremove'.setup()
+
+-- colorscheme
+vim.cmd.colorscheme "catppuccin-frappe"
 
 -- LSP
 vim.lsp.config("lua_ls", {
