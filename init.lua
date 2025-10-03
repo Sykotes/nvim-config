@@ -61,7 +61,7 @@ vim.lsp.enable({
     "rust_analyzer",
 })
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+map("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- clipboard
 map({ "n", "v" }, "<leader>y", '"+y')
