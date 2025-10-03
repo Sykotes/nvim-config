@@ -61,25 +61,21 @@ vim.lsp.enable({
     "rust_analyzer",
 })
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
-map("n", "<leader>q", vim.diagnostic.setloclist)
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Set location list" })
+map("n", "<leader>l", vim.lsp.buf.format, { desc = "Format buffer" })
 
 -- clipboard
 map({ "n", "v" }, "<leader>y", '"+y')
-map({ "n", "v" }, "<leader>d", '"+d')
 map("n", "<leader>p", '"+p')
 map("v", "<leader>p", '"+P')
 
 -- remove all highlighting
-map("n", "<Esc>", ":noh<cr>", { silent = true })
+map("n", "<Esc>", "<Cmd>noh<CR>")
 
--- other Mappings
-map("n", "<leader>l", vim.lsp.buf.format, { desc = "Format buffer" })
-
+-- magpied
 map("n", "<leader>c", require("mini.bufremove").delete, { desc = "Close buffer" })
 map("n", "<C-f>", "<Cmd>Open .<CR>")
-
 map("n", "<leader>g", "<Cmd>Pick grep_live<CR>")
 map("n", "<leader>f", "<Cmd>Pick files<CR>")
 map("n", "<leader>b", "<Cmd>Pick buffers<CR>")
-
 map("n", "<leader>h", "<Cmd>Pick help<CR>")
